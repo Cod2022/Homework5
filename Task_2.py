@@ -11,8 +11,11 @@ if n <= 28:
         print(f'Победил {winner[move]}')
 while n > 0:
     amount = int(input(f'Ход игрока {winner[move]}.Введите количество конфет, которое он возьмёт: '))
-    if not 1 <= amount <= 28:
-        amount = int(input('Ошибка! Введите количество конфет от 1 до 28!'))
+    while not 1 <= amount <= 28:
+        amount = int(input('Ошибка! Введите количество конфет от 1 до 28: '))
+    while amount > n:
+        amount = int(input(f'Ошибка! Введите количество конфет меньшее, или равно {n}: '))
     n -= amount
     print(f'Осталось {n} конфет')
     move = (move + 1) % 2
+print(f'Победил {winner[move]}!')
